@@ -1,0 +1,7 @@
+.btn-default:focus, .btn-default:hover {
+  color: rgba(0,0,0,0.36);
+  border: 1px solid rgba(0,0,0,0.43);
+  outline: none;
+  background-color: rgba(0,0,0,0.45);
+}
+
