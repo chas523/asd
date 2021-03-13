@@ -1,0 +1,15 @@
+body {
+    background-color: rgb(177, 177, 177);
+}
+
+h1{
+    font-size: 1.6em;
+}
+.border-div{
+    margin-left: 30%;
+    border: 1px solid black;
+    width: 50%;
+}
+.border-div p {
+    text-align: center;
+}
