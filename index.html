@@ -4,11 +4,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--Bootstrap css-->
+  <!--Bootstrap CSS and jQuery-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css"/>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  
+  <!--My JS and CSS-->
+  <script src="js/script.js"></script>
   <link rel="stylesheet" href="css/style.css">
+  
   <title>Document</title>
 </head>
 <body>
@@ -20,6 +23,7 @@
         Rzeczpospolita Polska
     </a>
   </div>
+  
 </nav>
 <br>
 <br>
@@ -37,13 +41,19 @@
     <hr>
   </div>
 </header>
-<form action="#" method="post">
-  <fieldset class="container">
+<form class="needs-validation" action="#" method="post" novalidate >
+  <fieldset class="container-sm">
     <legend>1.Wnioskodawca</legend>
     <div class="input-group ">
-      <span class="input-group-text">Imie i Nazwisko</span>
-      <input type="text" aria-label="First name" class="form-control" placeholder="Imie">
-      <input type="text" aria-label="Last name" class="form-control" placeholder="Nazwisko">
+      <span class="input-group-text">Imie</span>
+      <input type="text" name="first_name" aria-label="First name" class="form-control" id="validationCustom01" placeholder="Imie" required pattern="[A-Za-z]{1,32}">
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <br>
+    <div class="input-group ">
+      <span class="input-group-text">Nazwisko</span>
+      <input type="text" name="last_name" aria-label="last name" class="form-control" id="validationCustom01" placeholder="Imie" required pattern="[A-Za-z]{1,32}">
     </div>
     <br>
     <div class="row">
@@ -54,15 +64,19 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputCity">Miasto</label>
-            <input type="text" class="form-control" id="inputCity" placeholder="Miasto">
+            <input type="text" class="form-control" id="inputCity" name="city" placeholder="Miasto" required pattern="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$" >
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
           </div>
         <label for="inputStreet">Ulica, Numer domu, numer lokalu</label>
-        <input type="text" class="form-control" id="inputStreet" placeholder="ulica 2b, 5">
+        <input type="text" class="form-control" name="street" id="inputStreet" placeholder="ulica 2b, 5" required >
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
       </div>
     </div>
       <div class="form-group col-md-4">
         <label for="inputState">Państwo</label>
-        <select id="inputState" class="form-control">
+        <select id="inputState" class="form-control" name="country" required >
           <option value="">Wybierz</option>
           <option value="AF">Afganistan</option>
           <option value="AL">Albania</option>
@@ -314,39 +328,49 @@
           <option value="ZW">Zimbabwe</option>
           <option value="AE">Zjednoczone Emiraty Arabskie</option>
         </select>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
       </div>
       <div class="form-group col-md-2">
         <label for="inputZip">Kod pocztowy</label>
-        <input type="text" class="form-control" id="inputZip" placeholder="zip">
+        <input type="text" class="form-control" id="inputZip" name="zip" placeholder="zip" required >
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
       </div>
     </div>
   </fieldset>
   <br>
-  <fieldset class="container">
+  <fieldset class="container-sm">
     <legend>2.Dane osoby, której dotyczy wniosek</legend>
     <hr>
     <div class="input-group ">
       <span class="input-group-text">Imie i Nazwisko</span>
-      <input type="text" aria-label="First name 2" class="form-control" placeholder="Imie">
-      <input type="text" aria-label="Last name 2" class="form-control" placeholder="Nazwisko">
+      <input type="text" name="first_name2" aria-label="First name 2" class="form-control" placeholder="Imie" required>
+      <input type="text" name="last_name2" aria-label="Last name 2" class="form-control" placeholder="Nazwisko" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this fields.</div>
     </div>
     <br>
     <div class="input-group mb-3">
       <label class="input-group-text" for="inputGroupSelect01">Płeć</label>
-      <select class="form-select" id="inputGroupSelect01" required>
+      <select class="form-select" id="inputGroupSelect01" name="gender2" required>
         <option value="">Wybierz</option>
         <option value="1">mężczyzna</option>
         <option value="2">kobieta</option>
       </select>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this fields.</div>
     </div>
     <div class="input-group ">
       <span class="input-group-text">Data urodzenia</span>
-      <input type="date" aria-label="Data urodzenia" class="form-control" >
+      <input type="date" name="birthday2" aria-label="Data urodzenia" class="form-control" required >
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this fields.</div>
     </div>
     <br>
     <div class="input-group mb-3">
       <label class="input-group-text" for="inputState-1">Kraj urodzenia</label>
-      <select class="form-select" id="inputState-1" required>
+      <select class="form-select" name="country_of_birth2" id="inputState-1" required>
         <option value="">Wybierz</option>
         <option value="AF">Afganistan</option>
         <option value="AL">Albania</option>
@@ -598,10 +622,12 @@
         <option value="ZW">Zimbabwe</option>
         <option value="AE">Zjednoczone Emiraty Arabskie</option>
       </select>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this fields.</div>
     </div>
     <div class="input-group mb-3">
       <label class="input-group-text" for="inputState-2">Kraj miejsca zamieszkania</label>
-      <select class="form-select" id="inputState-2" required>
+      <select class="form-select" name="country_of_residence2" id="inputState-2" required >
         <option value="">Wybierz</option>
         <option value="AF">Afganistan</option>
         <option value="AL">Albania</option>
@@ -853,30 +879,36 @@
         <option value="ZW">Zimbabwe</option>
         <option value="AE">Zjednoczone Emiraty Arabskie</option>
       </select>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this fields.</div>
     </div>
     <div class="input-group mb-3">
       <label class="input-group-text" for="inputNat">Obywatelstwo</label>
-      <select class="form-select" id="inputNat">
+      <select class="form-select" name="nationality2" id="inputNat" required>
         <option value="">Wybierz</option>
         <option value="pl">Polskie</option>
         <option value="bez">Bezpaństwowiec</option>
         <option value="inne">Inne</option>
       </select>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this fields.</div>
     </div>
     <div class="input-group" id ="div_inne" style="display: none;">
       <span class="input-group-text">Obywatelstwo</span>
-      <input type="text" aria-label="Obywatelstwo" class="form-control" placeholder="napisz">
+      <input type="text" name="nationality2_hide" id = "inne_input" aria-label="Obywatelstwo" class="form-control" placeholder="napisz" required>
     </div>
     <div class="row">
       <p style="text-decoration: underline;">Ostatnio wydany paszport obywatela polskiego</p>
     </div>
     <div class="input-group mb-3">
       <span class="input-group-text">Seria i numer</span>
-      <input type="text" aria-label="Seria i numer" class="form-control" placeholder="Seria i numer">
+      <input type="text" name="series_and_number2" aria-label="Seria i numer" class="form-control" placeholder="Seria i numer" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this fields.</div>
     </div>
     <div class="input-group ">
       <span class="input-group-text">Data ważności paszportu</span>
-      <input type="date" aria-label="Data waznosci paszportu" class="form-control" >
+      <input type="date" name="passport_expiry_date2" aria-label="Data waznosci paszportu" class="form-control" required >
     </div>
     <br>
     <div class="row">
@@ -888,8 +920,10 @@
     </div>
     <div class="input-group ">
       <span class="input-group-text">Data ważności paszportu</span>
-      <input type="date" aria-label="Data waznosci paszportu 2" class="form-control" >
+      <input type="date" aria-label="Data waznosci paszportu 2" class="form-control" required >
     </div>
+    <div class="valid-feedback">Valid.</div>
+    <div class="invalid-feedback">Please fill out this fields.</div>
   </fieldset>
   <br>
   <fieldset class="container">
@@ -1068,52 +1102,39 @@
   <br>
   <div class="container">
     <div class="d-grid gap-2 d-md-block">
-      <button class="btn btn-primary" type="button">wysłać</button>
-      <button class="btn btn-primary" type="reset">wyczyść pola
-      </button>
+      <button class="btn btn-dark" id="bt" type="submit">wysłać</button>
+      <button class="btn btn-dark" id="bt" type="reset">wyczyść pola</button>
     </div>
   </div>
 </form>
 
 
-<script>
-    $(function () {
-      $("#inputNat").change(function() {
-      var val = $(this).val();
-      if(val === "inne") {
-        $("#div_inne").show('slow');
-      }
-      else {
-        $("#div_inne").hide('slow');
-    }
-  });
-  $(document).ready(function () {
-    $('input[type="radio"]').click(function () {
-      if ($(this).attr("value") == "no") {
-        $("#mailsend").hide('slow');
-      }
-      if ($(this).attr("value") == "yes") {
-        $("#mailsend").show('slow');
-      }
-    });
-    $('input[type="radio"]').trigger('click');  // trigger the event
-  });
-});
-</script>
+
+<br>
+<br>
+<br>
+<br>
 
 <script>
-    $(function () {
-      $("#stan").change(function() {
-      var val = $(this).val();
-      if(val === "true") {
-        $("#stancywilny").show('slow');
-      }
-      else {
-        $("#stancywilny").hide('slow');
-    }
-  });
-  });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  // Disable form submissions if there are invalid fields
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // Get the forms we want to add validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </body>
 </html>

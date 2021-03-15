@@ -13,3 +13,9 @@ h1{
 .border-div p {
     text-align: center;
 }
+#bt {
+    transition: 0.5s linear;
+}
+#bt:hover{
+    background-color: green ;
+}
